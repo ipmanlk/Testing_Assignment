@@ -41,7 +41,7 @@ public class TestBase {
 String browserName = properties.getProperty("browser");
 		
 		if(browserName.equals("chrome")){
-			System.setProperty("webdriver.chrome.driver", "//Users//methuliakithma//Documents//Trainings//UCSC//chromedriver");	
+			System.setProperty("webdriver.chrome.driver", "//home//ipman//Downloads//chromedriver_linux64//chromedriver");
 			driver = new ChromeDriver(); 
 		}
 		else if(browserName.equals("Firefox")){

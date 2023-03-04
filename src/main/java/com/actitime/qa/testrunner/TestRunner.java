@@ -8,12 +8,11 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "/Users/methuliakithma/eclipse-workspace/ActitimeTestBDD/src/main/java/com/actitime/qa/feature/Loging.feature"
+		features = "/home/ipman/projects/playground/Testing_Assignment/src/main/java/com/actitime/qa/feature/Loging.feature"
 		,glue={"com/actitime/qa/stepdefinitions"}
 		,monochrome = true,
 				strict=true,
 				dryRun=false
-				
 		)
 
 
