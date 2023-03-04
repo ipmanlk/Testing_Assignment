@@ -24,16 +24,15 @@ public class HomePage extends TestBase {
 		
 		@FindBy(xpath = "//div[@id='logo_aT']")
 		WebElement actitimeLogo;
-		
+
+		@FindBy(xpath = "//a[@class='content users']")
+		WebElement usersLink;
 	
 		
 		//initialization
 		
 		public HomePage() {
-			
 			PageFactory.initElements(driver, this);
-			
-			
 		}
 		
 		
@@ -45,7 +44,6 @@ public class HomePage extends TestBase {
 			log.info("Validated Logo");
 			return actitimeLogo.isDisplayed();
 			
-			
 		}
 		
 		
@@ -55,6 +53,11 @@ public class HomePage extends TestBase {
 			taskLink.click();
 			return new TasksPage();
 			
+		}
+
+		public UsersPage clickOnUsersLink() {
+			usersLink.click();
+			return new UsersPage();
 		}
 		
 		
