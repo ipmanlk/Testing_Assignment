@@ -4,27 +4,21 @@ import com.actitime.qa.base.TestBase;
 import com.actitime.qa.pages.HomePage;
 import com.actitime.qa.pages.LoginPage;
 import com.actitime.qa.pages.UsersPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.junit.AfterClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 public class CreateUserTest extends TestBase {
 
-    LoginPage loginPage;
-    HomePage homePage;
-    UsersPage usersPage;
+    private static LoginPage loginPage;
+    private static HomePage homePage;
+    private static UsersPage usersPage;
 
     public CreateUserTest() {
         super();
     }
 
-
-    @BeforeMethod
+    @BeforeSuite
     public void setup() {
         initialization();
         loginPage = new LoginPage();
@@ -32,25 +26,28 @@ public class CreateUserTest extends TestBase {
         usersPage = homePage.clickOnUsersLink();
     }
 
-
     @Test(priority = 1)
-    public void clickOnNewUserButton() {
-        this.usersPage.clickOnNewUserButton();
+    public void openNewUserPanel() {
+        usersPage.clickOnNewUserButton();
     }
 
-    @Test(priority = 2)
-    public void fillUserData() throws InterruptedException {
-        this.usersPage.clickOnNewUserButton();
-        WebDriverWait wait = new WebDriverWait(driver, 15); // wait for up to 10 seconds
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='createUserPanel_firstNameField']")));
-        element.sendKeys("lalala lalala");
+    @Test(priority = 2, dependsOnMethods = {"openNewUserPanel"})
+    public void fillUserData() {
+        usersPage.fillUserData();
     }
 
-    @AfterMethod
-    public void tearDown() {
-
-//        driver.quit();
+    @Test(priority = 3, dependsOnMethods = {"fillUserData"})
+    public void createNewUser() {
+        usersPage.clickOnSaveAndSendInvitationButton();
     }
 
+    @Test(priority = 4, dependsOnMethods = {"createNewUser"})
+    public void closeNewUserPanel() {
+        usersPage.clickOnCloseNewUserPanelButton();
+    }
 
+    @AfterClass
+    public static void tearDown() {
+        driver.quit();
+    }
 }
