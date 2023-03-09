@@ -1,12 +1,18 @@
 package com.actitime.qa.testcases;
 
 import com.actitime.qa.base.TestBase;
+import com.actitime.qa.entities.UserCredential;
 import com.actitime.qa.pages.HomePage;
 import com.actitime.qa.pages.LoginPage;
 import com.actitime.qa.pages.UsersPage;
+import com.actitime.qa.util.UsersUtil;
+import com.opencsv.exceptions.CsvValidationException;
 import org.junit.AfterClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class CreateUserTest extends TestBase {
 
@@ -32,8 +38,9 @@ public class CreateUserTest extends TestBase {
     }
 
     @Test(priority = 2, dependsOnMethods = {"openNewUserPanel"})
-    public void fillUserData() {
-        usersPage.fillUserData();
+    public void fillUserData() throws CsvValidationException, IOException {
+        UserCredential userCredential =  UsersUtil.getUserCredential();
+        usersPage.fillUserData(userCredential);
     }
 
     @Test(priority = 3, dependsOnMethods = {"fillUserData"})

@@ -1,6 +1,7 @@
 package com.actitime.qa.pages;
 
 import com.actitime.qa.base.TestBase;
+import com.actitime.qa.entities.UserCredential;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,10 +40,10 @@ public class UsersPage extends TestBase  {
         saveAndSendInvitationButton = wait.until(ExpectedConditions.elementToBeClickable(saveAndSendInvitationButton));
     }
 
-    public void fillUserData() {
-        firstNameInput.sendKeys("First Name");
-        lastNameInput.sendKeys("Last Name");
-        emailInput.sendKeys("email@email.com");
+    public void fillUserData(UserCredential userCredential) {
+        firstNameInput.sendKeys(userCredential.getFirstName());
+        lastNameInput.sendKeys(userCredential.getLastName());
+        emailInput.sendKeys(userCredential.getPassword());
     }
 
     public void clickOnSaveAndSendInvitationButton() {
