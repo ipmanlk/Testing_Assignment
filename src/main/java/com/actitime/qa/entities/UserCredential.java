@@ -3,12 +3,12 @@ package com.actitime.qa.entities;
 public class UserCredential {
     private String firstName;
     private String lastName;
-    private  String password;
+    private  String email;
 
-    public UserCredential(String firstName, String lastName, String password) {
+    public UserCredential(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -19,7 +19,7 @@ public class UserCredential {
         return lastName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 }

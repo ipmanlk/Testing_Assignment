@@ -2,7 +2,6 @@ package com.actitime.qa.pages;
 
 import com.actitime.qa.base.TestBase;
 import com.actitime.qa.entities.UserCredential;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -43,7 +42,7 @@ public class UsersPage extends TestBase  {
     public void fillUserData(UserCredential userCredential) {
         firstNameInput.sendKeys(userCredential.getFirstName());
         lastNameInput.sendKeys(userCredential.getLastName());
-        emailInput.sendKeys(userCredential.getPassword());
+        emailInput.sendKeys(userCredential.getEmail());
     }
 
     public void clickOnSaveAndSendInvitationButton() {
