@@ -15,7 +15,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class CreateUserTest extends TestBase {
-
     private static LoginPage loginPage;
     private static HomePage homePage;
     private static UsersPage usersPage;
